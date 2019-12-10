@@ -1,13 +1,14 @@
-FROM gcc
+FROM vookimedlo/ubuntu-qt:latestDistroOfficial_gcc_eoan
 
 COPY . /user/src/remotesrc
 WORKDIR /user/src/remotesrc
 
-RUN wget http://download.qt.io/official_releases/qt/5.13/5.13.2/qt-opensource-linux-x64-5.13.2.run && \
-    apt-get install build-essential
-
-RUN ["qmake", "lib/LibDS"]
-RUN ["make"]
-RUN ["g++","-o","RemoteDS","-l","lib/LibDS", "src/main.cpp"]
-
+RUN chdir lib/LibDS && \
+    qmake && \
+    make && \
+    ls && \
+    chdir ../../ && \
+    pwd && \
+    g++ -o RemoteDS src/main.cpp -lLibDS -Llib/LibDS/
 CMD ["./RemoteDS"]
+#CMD `gcc -print-prog-name=cpp` -v
