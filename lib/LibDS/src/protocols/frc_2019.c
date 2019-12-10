@@ -115,7 +115,7 @@ static DS_String radio_address (void)
  */
 static DS_String robot_address (void)
 {
-    return DS_GetStaticIP (10, CFG, GetTeamNumber(), 2);
+    return DS_GetStaticIP (10, CFG_GetTeamNumber(), 2);
     //return DS_StrFormat ("roboRIO-%d-frc.local", CFG_GetTeamNumber());
 }
 
