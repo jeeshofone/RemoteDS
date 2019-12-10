@@ -119,6 +119,17 @@ static DS_String robot_address (void)
     //return DS_StrFormat ("roboRIO-%d-frc.local", CFG_GetTeamNumber());
 }
 
+static DS_String get_joystick_data(void)
+{
+  return DS_StrNew("");
+  //TODO read DS packets
+}
+
+static float decode_voltage(uint8_t upper, uint8_t lower)
+{
+  return 0;
+}
+
 /**
  * Returns the control code sent to the robot, it contains:
  *    - The control mode of the robot (teleop, autonomous, test)
