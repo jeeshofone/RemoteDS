@@ -1,4 +1,6 @@
 #include "libds/LibDS.h"
+#include <cpprest/http_client.h>
+#include <cpprest/filestream.h>
 
 int main() {
 

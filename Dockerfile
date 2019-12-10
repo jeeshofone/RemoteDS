@@ -2,7 +2,8 @@ FROM vookimedlo/ubuntu-qt:latestDistroOfficial_gcc_eoan
 #RUN git clone https://github.com/Team3487-RedPrideRobotics/RemoteDS.git
 COPY . /RemoteDS
 WORKDIR /RemoteDS
-RUN chdir lib/LibDS && \
+RUN apt-get install libcpprest-dev && \
+    chdir lib/LibDS && \
     qmake && \
     make && \
     make install && \
