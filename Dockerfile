@@ -1,14 +1,11 @@
 FROM vookimedlo/ubuntu-qt:latestDistroOfficial_gcc_eoan
-
-COPY . /user/src/remotesrc
-WORKDIR /user/src/remotesrc
-
+#RUN git clone https://github.com/Team3487-RedPrideRobotics/RemoteDS.git
+COPY . /RemoteDS
+WORKDIR /RemoteDS
 RUN chdir lib/LibDS && \
     qmake && \
     make && \
-    ls && \
+    make install && \
     chdir ../../ && \
-    pwd && \
     g++ -o RemoteDS src/main.cpp -lLibDS -Llib/LibDS/
-CMD ["./RemoteDS"]
-#CMD `gcc -print-prog-name=cpp` -v
+CMD ["./RemoteDS"] 
