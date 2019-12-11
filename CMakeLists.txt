@@ -5,9 +5,12 @@ if(${CMAKE_VERSION} VERSION_LESS 3.12)
 endif()
 
 project(RemoteDS    VERSION 0.1
-                    Description "Strings for the puppet of a Robot"
+                    Description "Strings for the puppet of a robot."
                     LANGUAGES CXX)
+
+find_package(cpprestsdk REQUIRED)
 
 add_executable(RemoteDSExec main.cpp)
 
+target_link_libraries(main PUBLIC cpprestsdk::cpprest)
 target_include_directories(RemoteDSExec)
