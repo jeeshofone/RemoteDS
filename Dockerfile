@@ -1,12 +1,8 @@
-FROM vookimedlo/ubuntu-qt:latestDistroOfficial_gcc_eoan
+FROM rikorose/gcc-cmake
 #RUN git clone https://github.com/Team3487-RedPrideRobotics/RemoteDS.git
 COPY . /RemoteDS
 WORKDIR /RemoteDS
-RUN apt-get install libcpprest-dev && \
-    chdir lib/LibDS && \
-    qmake && \
+RUN cmake . && \
     make && \
-    make install && \
-    chdir ../../ && \
-    g++ -o RemoteDS src/main.cpp -lLibDS -Llib/LibDS/
+    make install
 CMD ["./RemoteDS"] 

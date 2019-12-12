@@ -10,7 +10,12 @@ project(RemoteDS    VERSION 0.1
 
 find_package(cpprestsdk REQUIRED)
 
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}"/lib/LibDS/include "${CMAKE_CURRENT_SOURCE_DIR}"/include/RemoteDS)
+file(GLOB SRC_FILES "${CMAKE_CURRENT_SOURCE_DIR}"/lib/LibDS/src/*.cpp)
+add_library(LibDS, ${SRC_FILES})
+
+
 add_executable(RemoteDSExec main.cpp)
 
-target_link_libraries(main PUBLIC cpprestsdk::cpprest)
+target_link_libraries(RemoteDSExec PUBLIC cpprestsdk::cpprest)
 target_include_directories(RemoteDSExec)
